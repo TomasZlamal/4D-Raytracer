@@ -5,6 +5,7 @@ Image - Example of a 4D hypersphere render
 A four-dimensional ray tracer, written in C++.
 Currently only supports hyperspheres.
 
+This project heavily borrowed code and concepts from [RayTracingInOneWeekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html#overview), but scaled it up to the fourth dimension.
 ## Using it
 Build and try the raytracer out:
 ```bash
