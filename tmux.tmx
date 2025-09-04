@@ -1,0 +1,6 @@
+"rt4d"
+  "nvim"#
+    !{nvim .}
+  "build"
+    !{cd build}
+  "git"

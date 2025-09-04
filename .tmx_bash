@@ -1,0 +1,11 @@
+#!/bin/bash
+tmux has-session -t rt4d
+if [ $? != 0 ]; then
+	tmux new-session -d -s rt4d -n nvim
+	tmux send-keys -t rt4d:nvim 'nvim .' C-m
+	tmux new-window -t rt4d -n build
+	tmux send-keys -t rt4d:build 'cd build' C-m
+	tmux new-window -t rt4d -n git
+	tmux select-window -t rt4d:nvim
+fi
+tmux attach-session -t rt4d
