@@ -1,5 +1,7 @@
 # raytracer4d
 ![4D Ray Traced Image](https://github.com/TomasZlamal/4D-Raytracer/blob/main/example.png)
+Image - Example of a 4D hypersphere render
+
 A four-dimensional ray tracer, written in C++.
 Currently only supports hyperspheres.
 
