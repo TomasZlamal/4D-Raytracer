@@ -13,3 +13,10 @@ cmake --build .
 ```
 Then the result is inside of out.ppm
 
+## Parameters
+The way this ray tracer works is that it projects the 4D space onto a 3D viewport, which has a viewport width, height and depth.
+Since you can only project a 2D image onto a 2D screen, you can only see a certain "depth" of the image at a time. You can set this depth by passing a parameter to the program:
+```
+./raytracer4d 30
+```
+Would be equivavlent to a depth of 0.3f, since the result gets divived by a hundred.
