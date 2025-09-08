@@ -25,13 +25,13 @@ void write_color(std::ostream &out, const color &pixel_color) {
 int main(int argc, char **argv) {
   rt4::ObjectWorld world4D;
   rt4::vec4 center = {2.0f, 2.2f, 0.0f, 1.0f};
-  rt4::Object4D *hypersphere = new rt4::Hypersphere{center, 2.1f};
+  rt4::Object4D *hypersphere = new rt4::Hypersphere{center, 1.7f};
   world4D.addObject(hypersphere);
 
   float aspect_ratio = 16.0f / 9;
   float vp_height = 1.0;
   float vp_width = vp_height * aspect_ratio;
-  float vp_depth = 0.0f;
+  float vp_depth = 1.5f;
 
   int image_height = 600;
   int image_width = image_height * aspect_ratio;
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
   float delta_u = vp_width / image_width;
   float delta_v = vp_height / image_height;
 
-  float current_depth = 0.0f;
+  float current_depth = 0.1f;
   if (argc > 1) {
     current_depth = static_cast<float>(std::stoi(std::string(argv[1]))) / 100;
   }
