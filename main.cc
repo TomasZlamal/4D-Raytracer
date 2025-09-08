@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
   float aspect_ratio = 16.0f / 9;
   float vp_height = 1.0;
   float vp_width = vp_height * aspect_ratio;
-  float vp_depth = 1.0;
+  float vp_depth = 0.0f;
 
   int image_height = 600;
   int image_width = image_height * aspect_ratio;
