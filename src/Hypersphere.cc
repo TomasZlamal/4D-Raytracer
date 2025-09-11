@@ -11,7 +11,7 @@ int Hypersphere::vec4Collides(vec4 vec) {
       m_center.z * m_center.z + m_center.w * m_center.w;
 
   float determinant = (b * b - 4 * a * c);
-  if (determinant > 0) {
+  if (determinant >= 0) {
     // check if t1, t2 are negative. Stop returning negative values, since that
     // would mean going behing the camera. then return the value closest to the
     // camera, so it should actually be std::min, not std::max.

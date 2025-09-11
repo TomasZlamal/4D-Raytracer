@@ -24,8 +24,8 @@ void write_color(std::ostream &out, const color &pixel_color) {
 
 int main(int argc, char **argv) {
   rt4::ObjectWorld world4D;
-  rt4::vec4 center = {2.0f, 2.2f, 0.0f, 1.0f};
-  rt4::Object4D *hypersphere = new rt4::Hypersphere{center, 1.7f};
+  rt4::vec4 center = {2.0f, 2.0f, 0.0f, 1.0f};
+  rt4::Object4D *hypersphere = new rt4::Hypersphere{center, 3.1f};
   world4D.addObject(hypersphere);
 
   float aspect_ratio = 16.0f / 9;
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
   float delta_u = vp_width / image_width;
   float delta_v = vp_height / image_height;
 
-  float current_depth = 0.1f;
+  float current_depth = 0.f;
   if (argc > 1) {
     current_depth = static_cast<float>(std::stoi(std::string(argv[1]))) / 100;
   }
@@ -54,8 +54,8 @@ int main(int argc, char **argv) {
               << std::flush;*/
     for (int i = 0; i < image_width; i++) {
       rt4::vec4 curr_vec;
-      curr_vec.x = i * delta_u;
-      curr_vec.y = j * delta_v;
+      curr_vec.x = i * delta_u - vp_width / 2;
+      curr_vec.y = j * delta_v - vp_height / 2;
       curr_vec.z = 0.0f;
       curr_vec.w = current_depth;
       float r, g, b;
@@ -69,9 +69,12 @@ int main(int argc, char **argv) {
           auto tmp = objectDefinitely.lock();
           int collides = (*tmp)->vec4Collides(curr_vec);
           r = 0.0f;
-          g = static_cast<float>(collides) /
-              (1 + abs(collides)); // fast sigmoid
+          g = 0.0f;
           b = 0.0f;
+          if (collides) {
+            g = static_cast<float>(collides) /
+                (1 + abs(collides)); // fast sigmoid
+          }
         }
       }
       rt4::vec3 color = {r, g, b};
